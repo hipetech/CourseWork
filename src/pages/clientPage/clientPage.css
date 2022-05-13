@@ -1,0 +1,41 @@
+.contentContainer {
+    width: 78%;
+    height: 3000px;
+    margin: 0 auto;
+}
+
+.contentContainer > * {
+    box-shadow: black;
+}
+
+.slider {
+    margin-top: 20px;
+}
+
+.aboutUs {
+    margin-top: 20px;
+}
+
+.aboutUsImgBox {
+    object-fit: cover;
+    width: 100%;
+}
+
+.aboutUsImgBox > img {
+    width: 100%;
+    height: 100%;
+}
+
+.clientCardsArticle {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.cardGroup {
+    margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    height: 1500px;
+}

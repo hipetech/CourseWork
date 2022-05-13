@@ -10,9 +10,11 @@ export class ServicemanPage extends Component{
 
     render() {
         return(
-            <h1>
-                serviceManPage
-            </h1>
+            <>
+                <h1>
+                    serviceManPage
+                </h1>
+            </>
         )
     }
 }
