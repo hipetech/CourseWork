@@ -82,6 +82,31 @@ export class Navigation extends Component {
                     </Container>
                 </Navbar>
                 <Outlet/>
+                <footer>
+                    <section className="links">
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a className={"footerImgBox"}>
+                            <img src={"footer/google.png"} alt="google icon"/>
+                        </a>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a className={"footerImgBox"}>
+                            <img src={"footer/github.png"} alt="google icon"/>
+                        </a>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a className={"footerImgBox"}>
+                            <img src={"footer/facebook.png"} alt="google icon"/>
+                        </a>
+                        {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}
+                        <a className={"footerImgBox"}>
+                            <img src={"footer/instagram.png"} alt="google icon"/>
+                        </a>
+                    </section>
+                    <section className="footerCopyright">
+                        <p>
+                            ©2022 Copyright: Курсова робота студента групи ІПЗ20-1 Короти Кирила
+                        </p>
+                    </section>
+                </footer>
             </>
         )
     }

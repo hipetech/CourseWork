@@ -1,0 +1,35 @@
+.formSection {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.form {
+    width: 100%;
+    margin: 50px auto;
+}
+
+.formCard {
+    margin: 0 auto;
+    width: 80%;
+    height: 350px;
+}
+
+.openFormBtn {
+
+}
+
+.hide {
+    display: none
+}
+
+.openFormBtn {
+    text-align: center;
+    color: white;
+    margin: auto auto;
+}
+
+.openFormBtn > h2 {
+    margin: 10px auto 40px;
+    width: 55%;
+}
+
