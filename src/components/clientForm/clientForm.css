@@ -1,17 +1,16 @@
-.formSection {
-    margin-top: 20px;
-    margin-bottom: 20px;
+.formCard {
+    margin: 20px auto;
+    width: 1350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
 }
 
 .form {
-    width: 100%;
-    margin: 50px auto;
-}
-
-.formCard {
     margin: 0 auto;
-    width: 80%;
-    height: 350px;
+    width: 1300px;
 }
 
 .openFormBtn {
@@ -31,5 +30,16 @@
 .openFormBtn > h2 {
     margin: 10px auto 40px;
     width: 55%;
+}
+
+.closeBtn {
+    margin-bottom: 12px;
+    margin-left: 98%;
+}
+
+.formBtn{
+    width: 105%;
+    height: 58px;
+
 }
 

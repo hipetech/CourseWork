@@ -46,7 +46,7 @@ export class ClientPage extends Component {
                         <div className="cardGroup">
                             <Card className="text-center" style={{width: '70%'}} data-aos="fade-right">
                                 <Card.Img variant="top" src="article/bookmark.svg"
-                                          style={{width: '40%', margin: '10px auto'}}/>
+                                          style={{width: '350px', margin: '10px auto'}}/>
                                 <Card.Body>
                                     <Card.Title>
                                         Гарантія
@@ -60,7 +60,7 @@ export class ClientPage extends Component {
                             </Card>
                             <Card className="text-center" style={{width: '70%'}} data-aos="fade-left">
                                 <Card.Img variant="top" src="article/speed.svg"
-                                          style={{width: '40%', margin: '10px auto'}}/>
+                                          style={{width: '350px', margin: '10px auto'}}/>
                                 <Card.Body>
                                     <Card.Title>
                                         Швидкість
@@ -74,7 +74,7 @@ export class ClientPage extends Component {
                             </Card>
                             <Card className="text-center" style={{width: '70%'}} data-aos="fade-right">
                                 <Card.Img variant="top" src="article/price-tag.svg"
-                                          style={{width: '40%', margin: '10px auto'}}/>
+                                          style={{width: '350px', margin: '10px auto'}}/>
                                 <Card.Body>
                                     <Card.Title>
                                         Ціна
@@ -88,10 +88,10 @@ export class ClientPage extends Component {
                             </Card>
                         </div>
                     </article>
+                    <section data-aos="fade-up"  data-aos-offset="200" className={"formSection"}>
+                        <ClientForm data-aos="fade-up"/>
+                    </section>
                 </div>
-                <section className="clientForm" >
-                    <ClientForm />
-                </section>
             </>
         )
     }

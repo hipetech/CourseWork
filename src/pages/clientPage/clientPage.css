@@ -4,10 +4,6 @@
     margin: 0 auto;
 }
 
-/*.contentContainer > * {*/
-/*    box-shadow: black;*/
-/*}*/
-
 .slider {
     margin-top: 20px;
 }
@@ -18,11 +14,13 @@
 
 .clientCardsArticle {
     margin-top: 20px;
+    margin-bottom: 30px;
     text-align: center;
 }
 
 .cardGroup {
     margin-top: 20px;
+    margin-bottom: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
@@ -34,9 +32,10 @@
     margin-top: 20px;
 }
 
-.clientForm {
-    width: 100%;
-    height: 350px;
-    margin-top: 20px;
-    margin-bottom: 20px;
+.space {
+    height: 250px;
+}
+
+.formSection {
+    margin: 0 auto;
 }
