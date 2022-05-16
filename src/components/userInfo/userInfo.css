@@ -1,0 +1,98 @@
+.userInfo {
+    width: 350px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: #0D6EFD;
+    color: white;
+}
+
+.userInfo > h2 {
+    margin: 10px 0;
+}
+
+.cards {
+    display: flex;
+    justify-content: center;
+}
+
+.cardData {
+    border: 1px solid #c9c9c9;
+    border-radius: 12px;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 15px;
+}
+
+.cardData:hover {
+    filter: grayscale(20%);
+}
+
+.userData {
+    width: 450px;
+    background-color: white;
+    color: white;
+}
+
+.data {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: normal;
+    font-size: 22px;
+    height: 80%;
+    color: white;
+}
+
+.item {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 12px;
+    width: 95%;
+}
+
+.item:hover {
+    transition: 0.3s;
+    transform: scale(1.03);
+}
+
+.item > p {
+    margin: 5px;
+}
+
+.email {
+    background-color: #EB674D;
+}
+
+.number {
+    background-color: #3AC93A;
+}
+
+.service {
+    background-color: #0D6EFD;
+}
+
+.countOfApplications {
+    width: 350px;
+    background-color: #EB674D;
+}
+
+.countOfHomeVisits {
+    width: 350px;
+    background-color: #3AC93A;
+}
+
+.countOfDeliveries {
+    width: 350px;
+    background-color: #0D6EFD;
+}
+
+.count {
+    font-size: 80px;
+}
+

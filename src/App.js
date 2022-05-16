@@ -1,5 +1,5 @@
 import './App.css';
-import {ServicemanPage} from "./pages/servicemanPage";
+import {ServicemanPage} from "./pages/servicemanPage/servicemanPage";
 import {ClientPage} from "./pages/clientPage/clientPage";
 import {Route, Routes} from "react-router-dom";
 import {Navigation} from "./components/navigation/navigation";
