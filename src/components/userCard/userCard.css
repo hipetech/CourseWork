@@ -1,0 +1,24 @@
+.statusCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 6px;
+    color: white;
+    margin-top: 5px;
+}
+
+.statusCard > p {
+    margin: 2px;
+}
+
+.toDo {
+    background-color: #EB674D;
+}
+
+.inProgress {
+    background-color: #0D6EFD;
+}
+
+.done {
+    background-color: #4EC14E;
+}
