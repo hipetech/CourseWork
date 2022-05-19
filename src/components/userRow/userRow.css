@@ -5,20 +5,28 @@
     border-radius: 6px;
     color: white;
     margin-top: 5px;
+    width: 100px;
 }
 
 .statusCard > p {
     margin: 2px;
 }
 
-.toDo {
+.deliveryBox,
+.homeVisitBox {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+.red {
     background-color: #EB674D;
 }
 
-.inProgress {
+.blue{
     background-color: #0D6EFD;
 }
 
-.done {
+.green {
     background-color: #4EC14E;
 }

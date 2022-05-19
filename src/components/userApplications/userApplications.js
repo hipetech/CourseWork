@@ -1,7 +1,7 @@
 import {Component} from "react";
 
 import "./userApplications.css"
-import {UserCard} from "../userCard/userCard";
+import {UserRow} from "../userRow/userRow";
 import {Table} from "react-bootstrap";
 
 export class UserApplications extends Component{
@@ -13,6 +13,14 @@ export class UserApplications extends Component{
 
     }
 
+    renderTableItems = () => {
+       return this.props.applications.map((item) => {
+           return (
+               <UserRow rowData={item} key={item.id} id={item.id} changeStatus={this.props.changeStatus}/>
+           )
+       })
+    }
+
     render() {
         return (
             <>
@@ -20,7 +28,7 @@ export class UserApplications extends Component{
                     <thead>
                         <tr>
                             <th>
-                                #
+                                ID
                             </th>
                             <th>
                                 Ім'я
@@ -49,13 +57,15 @@ export class UserApplications extends Component{
                             <th>
                                 Візит додому
                             </th>
-                            <th>
+                            <th className={"tableStatus"}>
                                 Статус
                             </th>
                         </tr>
                     </thead>
                     <tbody>
-                        <UserCard cardData = {this.props.applications.application1}/>
+                    {
+                        this.renderTableItems()
+                    }
                     </tbody>
                 </Table>
             </>

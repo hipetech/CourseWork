@@ -4,7 +4,45 @@ import "./userInfo.css"
 export class UserInfo extends Component {
     constructor(props) {
         super(props);
-        this.state = {}
+        this.state = {
+
+        }
+    }
+
+    orderCount = () => {
+        let counter = 0;
+
+        this.props.applications.forEach((el) => {
+            if (el.status === 'to do' || el.status === 'in progress') {
+                counter += 1;
+            }
+        })
+
+        return counter;
+    }
+
+    homeVisitCount = () => {
+        let counter = 0;
+
+        this.props.applications.forEach((el) => {
+            if (el.homeVisit && el.status !== 'done') {
+                counter += 1;
+            }
+        })
+
+        return counter;
+    }
+
+    deliveryCount = () => {
+        let counter = 0;
+
+        this.props.applications.forEach((el) => {
+            if (el.delivery && el.status !== 'done') {
+                counter += 1;
+            }
+        })
+
+        return counter;
     }
 
     render() {
@@ -13,11 +51,13 @@ export class UserInfo extends Component {
             lastName,
             email,
             telNumber,
-            service,
-            countOfApplications,
-            countOfHomeVisits,
-            countOfDeliveries
+            service
         } = this.props.data;
+
+        let countOfApplications = this.orderCount();
+        let countOfHomeVisits = this.homeVisitCount();
+        let countOfDeliveries = this.deliveryCount();
+
         return (
             <>
                 <section className="cards">
