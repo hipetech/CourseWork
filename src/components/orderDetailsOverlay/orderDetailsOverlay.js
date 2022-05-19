@@ -1,43 +1,60 @@
-
 import {Button, Overlay, Popover} from "react-bootstrap";
-import {useState} from "react";
+import {Component} from "react";
 
-export const OrderDetailsOverlay = ({orderDetails}) => {
-    const [show, setShow] = useState(false);
-    const [target, setTarget] = useState(null);
-    let [buttonText, setButtonText] = useState('Показати')
+export class OrderDetailsOverlay extends Component {
+    constructor(props) {
+        super(props);
 
-    const handleClick = (event) => {
+        this.state = {
+            show: false,
+            target: null,
+            buttonText: 'Показати'
+        }
+    }
 
-        if (buttonText === "Показати") {
-            setButtonText("Закрити");
-        } else {
-            setButtonText("Показати");
+
+    handleClick = (e) => {
+        if (this.state.buttonText === "Показати") {
+            this.setState({buttonText: "Закрити"})
         }
 
-        setShow(!show);
-        setTarget(event.target);
-    };
+        this.setState({show: !(this.state.show)})
+        this.setState({target: e.target})
+    }
 
-    return (
-        <div>
-            <Button onClick={handleClick}>{buttonText}</Button>
+    closeOverLay = () => {
+        if (this.state.buttonText === "Закрити") {
+            this.setState({buttonText: "Показати"})
+        }
 
-            <Overlay
-                show={show}
-                target={target}
-                placement="left"
-                containerPadding={20}
-            >
-                <Popover id="popover-contained">
-                    <Popover.Header as="h3">Деталі</Popover.Header>
-                    <Popover.Body>
-                        <p>
-                            {orderDetails}
-                        </p>
-                    </Popover.Body>
-                </Popover>
-            </Overlay>
-        </div>
-    );
+        this.setState({show: false})
+    }
+
+    render() {
+        return (
+            <div>
+                <Button onClick={this.handleClick}>{this.state.buttonText}</Button>
+
+                <Overlay
+                    show={this.state.show}
+                    target={this.state.target}
+                    onHide={this.closeOverLay}
+                    rootClose={true}
+                    rootCloseEvent={'click'}
+                    placement="left"
+                    containerPadding={20}
+                    >
+                    <Popover id="popover-contained">
+                        <Popover.Header as="h3">Деталі</Popover.Header>
+                        <Popover.Body>
+                            <p>
+                                {this.props.orderDetails}
+                            </p>
+                        </Popover.Body>
+                    </Popover>
+                </Overlay>
+            </div>
+
+        )
+    }
 }
