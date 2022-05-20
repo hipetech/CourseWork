@@ -8,10 +8,10 @@ export class OrderDetailsOverlay extends Component {
         this.state = {
             show: false,
             target: null,
-            buttonText: 'Показати'
+            buttonText: 'Показати',
+            disabled: false
         }
     }
-
 
     handleClick = (e) => {
         if (this.state.buttonText === "Показати") {
@@ -30,11 +30,22 @@ export class OrderDetailsOverlay extends Component {
         this.setState({show: false})
     }
 
+    disabledCheck = () => {
+        if (this.props.orderDetails === '') {
+            this.setState({disabled: true, buttonText: "Не вказані"})
+        } else {
+            this.setState({disabled: false})
+        }
+    }
+
+    componentDidMount() {
+        this.disabledCheck();
+    }
+
     render() {
         return (
             <div>
-                <Button onClick={this.handleClick}>{this.state.buttonText}</Button>
-
+                <Button onClick={this.handleClick} disabled={this.state.disabled}>{this.state.buttonText}</Button>
                 <Overlay
                     show={this.state.show}
                     target={this.state.target}
@@ -54,7 +65,6 @@ export class OrderDetailsOverlay extends Component {
                     </Popover>
                 </Overlay>
             </div>
-
         )
     }
 }
