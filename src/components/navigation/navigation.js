@@ -30,6 +30,7 @@ export class Navigation extends Component {
         }
     }
 
+
     changeRoute = () => {
         if (this.state.route === '/servicemanPage') {
             this.setState(() => {
@@ -81,7 +82,7 @@ export class Navigation extends Component {
                         </Nav>
                     </Container>
                 </Navbar>
-                <Outlet/>
+                <Outlet context = {this.changeButtonLabel}/>
                 <footer>
                     <section className="links">
                         {/* eslint-disable-next-line jsx-a11y/anchor-is-valid */}

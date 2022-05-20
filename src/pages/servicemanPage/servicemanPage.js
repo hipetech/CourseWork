@@ -2,6 +2,7 @@ import {Component} from "react";
 import "./servicemanPage.css"
 import {UserInfo} from "../../components/userInfo/userInfo";
 import {UserApplications} from "../../components/userApplications/userApplications";
+import {SignInForm} from "../../components/signInForm/signInForm";
 
 export class ServicemanPage extends Component {
     constructor(props) {
@@ -198,9 +199,20 @@ export class ServicemanPage extends Component {
                     status: 'to do'
                 }
 
-            ]
+            ],
+            formVisible: '',
+            pageContentVisible: 'hide'
         }
     }
+
+    toggleContent = () => {
+        if (this.state.pageContentVisible === 'hide') {
+            this.setState({formVisible: 'hide', pageContentVisible: ''})
+        } else if (this.state.pageContentVisible !== 'hide') {
+            this.setState({formVisible: '', pageContentVisible: 'hide'})
+        }
+    }
+
 
     changeStatus = (id, status) => {
         let applications = this.state.applications;
@@ -214,17 +226,21 @@ export class ServicemanPage extends Component {
 
     render() {
         return (<>
-            <section className="masterInfo">
-                <h2 className={"title"}>
-                    Персональна інформація
-                </h2>
-                <UserInfo data={this.state.user} applications={this.state.applications}/>
-            </section>
-            <section className="mastersApplications">
-                <h2 className="title">
-                    Замовлення
-                </h2>
-                <UserApplications applications={this.state.applications} changeStatus={this.changeStatus}/>
+            <SignInForm className={this.state.formVisible} toggleContent={this.toggleContent}
+                        hide={this.state.formVisible}/>
+            <section className={`pageContent ${this.state.pageContentVisible}`}>
+                <section className="masterInfo">
+                    <h2 className={"title"}>
+                        Персональна інформація
+                    </h2>
+                    <UserInfo data={this.state.user} applications={this.state.applications}/>
+                </section>
+                <section className="mastersApplications">
+                    <h2 className="title">
+                        Замовлення
+                    </h2>
+                    <UserApplications applications={this.state.applications} changeStatus={this.changeStatus}/>
+                </section>
             </section>
         </>)
     }
