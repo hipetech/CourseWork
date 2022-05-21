@@ -2,15 +2,12 @@
 
 /.idea
 # dependencies
-/node_modules
+/client/node_modules
 /.pnp
 .pnp.js
 
-# testing
-/coverage
-
 # production
-/build
+/client/build
 
 # misc
 .DS_Store
