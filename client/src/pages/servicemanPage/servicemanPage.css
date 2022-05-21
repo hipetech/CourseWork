@@ -1,0 +1,10 @@
+.title {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.mastersApplications {
+    min-height: 700px;
+    margin-bottom: 30px;
+}

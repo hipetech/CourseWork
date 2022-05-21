@@ -1,0 +1,25 @@
+.signInFormBox {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 680px;
+}
+
+.signInForm {
+    width: 500px;
+    margin-bottom: 140px;
+    display: flex;
+    flex-direction: column;
+}
+
+.signInFormTitle {
+    margin-bottom: 25px;
+}
+
+.signInFormBtn {
+    width: 150px;
+    height: 43px;
+    align-self: end;
+}

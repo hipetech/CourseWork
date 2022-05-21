@@ -1,0 +1,45 @@
+.formCard {
+    margin: 20px auto;
+    width: 1350px;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.form {
+    margin: 0 auto;
+    width: 1300px;
+}
+
+.openFormBtn {
+
+}
+
+.hide {
+    display: none
+}
+
+.openFormBtn {
+    text-align: center;
+    color: white;
+    margin: auto auto;
+}
+
+.openFormBtn > h2 {
+    margin: 10px auto 40px;
+    width: 55%;
+}
+
+.closeBtn {
+    margin-bottom: 12px;
+    margin-left: 98%;
+}
+
+.formBtn{
+    width: 105%;
+    height: 58px;
+
+}
+
