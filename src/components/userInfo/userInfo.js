@@ -5,9 +5,24 @@ export class UserInfo extends Component {
     constructor(props) {
         super(props);
         this.state = {
-
+            dayPeriod: ''
         }
     }
+
+    setDayPeriod = () => {
+        const hours = new Date().getHours();
+
+        if (hours > 4 && hours <= 11) {
+            this.setState({dayPeriod: 'Доброго ранку'})
+        } else if (hours > 11 && hours <= 15) {
+            this.setState({dayPeriod: 'Доброго дня'})
+        } else if (hours > 15 && hours <= 22) {
+            this.setState({dayPeriod: 'Доброго вечора'})
+        } else if (hours > 22 && hours <= 4) {
+            this.setState({dayPeriod: 'Доброї ночі'})
+        }
+    }
+
 
     orderCount = () => {
         let counter = 0;
@@ -45,6 +60,10 @@ export class UserInfo extends Component {
         return counter;
     }
 
+    componentDidMount() {
+        this.setDayPeriod();
+    }
+
     render() {
         let {
             firstName,
@@ -63,7 +82,7 @@ export class UserInfo extends Component {
                 <section className="cards">
                     <section className="cardData userInfo">
                         <h2>
-                            Доброго вечора
+                            {this.state.dayPeriod}
                         </h2>
                         <h2>
                             {firstName} {lastName}
