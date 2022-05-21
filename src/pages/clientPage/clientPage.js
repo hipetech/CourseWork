@@ -1,6 +1,6 @@
 import {Component} from "react";
 import './clientPage.css';
-import {Button, Card, Carousel, Form} from "react-bootstrap";
+import {Card, Carousel} from "react-bootstrap";
 import AOS from 'aos';
 import {ClientForm} from "../../components/clientForm/clientForm";
 
@@ -13,7 +13,7 @@ export class ClientPage extends Component {
     componentDidMount() {
         AOS.init({
             duration: 1000,
-            offset: 600
+            offset: 500
         });
     }
 
