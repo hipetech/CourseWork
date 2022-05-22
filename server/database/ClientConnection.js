@@ -17,9 +17,13 @@ class ClientConnection {
         })
     }
 
+    disableConnection = () => {
+        this.clientConnection.end();
+    }
 
-    selectServiceMen = async () => {
-        const request = 'select serviceman_view.id, first_name, last_name, service_name, price from serviceman_view, service_view where serviceman_view.service_id = service_view.id';
+
+
+    _requestPromise = async (request) => {
         return new Promise((resolve, reject) => {
             this.clientConnection.query(request, (error, results) => {
                 if (error) {
@@ -28,6 +32,23 @@ class ClientConnection {
                 resolve(results)
             })
         });
+    }
+
+
+    selectServiceMen = () => {
+        const request =
+            'select id, first_name, last_name, service_id ' +
+            'from computer_service.serviceman_view'
+
+        return this._requestPromise(request);
+    }
+
+    selectService = () => {
+        const request =
+            'select id, service_name, price ' +
+            'from computer_service.service_view'
+
+        return this._requestPromise(request)
     }
 }
 

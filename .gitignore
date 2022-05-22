@@ -22,7 +22,7 @@ yarn-error.log*
 
 #server
 /server/node_modules
-/httpTest.http
+/httpTests
 
 #db
 /mysql-scripts

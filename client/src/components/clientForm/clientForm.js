@@ -8,7 +8,11 @@ export class ClientForm extends Component {
         this.state = {
             cardPrimary: "primary",
             formState: "hide",
-            btnState: ""
+            btnState: "",
+            isLoaded: false,
+            servicemen: [],
+            services: [],
+            selectedServiceId: ''
         }
     }
 
@@ -33,7 +37,69 @@ export class ClientForm extends Component {
         }
     }
 
+    renderServiceDropdown = () => {
+        return this.state.services.map(({id, service_name, price}) => {
+            return (
+                <option value={id} key={id}>{service_name}</option>
+            )
+        })
+    }
+
+    renderServicemenDropdown = () => {
+        return this.state.servicemen.map(({id, first_name, last_name, service_id}) => {
+            if (service_id === this.state.selectedServiceId) {
+                return (
+                    <option key={id}>{first_name} {last_name}</option>
+                )
+            } else {
+                return null;
+            }
+        })
+    }
+
+    _getServiceManData = () => {
+        fetch("http://localhost:5000/getServicemen")
+            .then(res => res.json())
+            .then((result) => {
+                    this.setState({
+                        isLoaded: true,
+                        servicemen: result
+                    });
+                }, (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    })
+                }
+            );
+    }
+
+    _getServiceData = () => {
+        fetch("http://localhost:5000/getService")
+            .then(res => res.json())
+            .then((result) => {
+                    this.setState({
+                        isLoaded: true,
+                        services: result,
+                        selectedServiceId: result[0].id
+                    });
+                }, (error) => {
+                    this.setState({
+                        isLoaded: true,
+                        error
+                    })
+                }
+            );
+    }
+
+    componentDidMount() {
+        this._getServiceData();
+        this._getServiceManData();
+    }
+
     render() {
+        let renderServicemenDropdown= this.renderServicemenDropdown();
+
         return (
             <>
                 <Card bg={this.state.cardPrimary} className={"formCard"}>
@@ -50,9 +116,13 @@ export class ClientForm extends Component {
                                     <Form.Label>Email</Form.Label>
                                 </Form.Floating>
                                 <Form.Floating className="mb-1">
-                                    <Form.Select>
-                                        <option>Послуга 1</option>
-                                        <option>Послуга 2</option>
+                                    <Form.Select onChange={(e) => {
+                                        this.setState({selectedServiceId: Number(e.target.value)});
+                                        renderServicemenDropdown = this.renderServicemenDropdown();
+                                    }}>
+                                        {
+                                            this.renderServiceDropdown()
+                                        }
                                     </Form.Select>
                                     <Form.Label>Тип потрібної вам послуги</Form.Label>
                                 </Form.Floating>
@@ -68,15 +138,19 @@ export class ClientForm extends Component {
                                 </Form.Floating>
                                 <Form.Floating className="mb-1">
                                     <Form.Select>
-                                        <option>Мастер 1</option>
-                                        <option>Мастер 2</option>
+                                        {
+                                            renderServicemenDropdown
+                                        }
                                     </Form.Select>
                                     <Form.Label>Оберіть мастера</Form.Label>
                                 </Form.Floating>
                                 <Row>
                                     <Col>
                                         <Button variant="primary" type="submit" className="mb-1 formBtn"
-                                                onClick={(e) => e.preventDefault()}>
+                                                onClick={(e) => {
+                                                    e.preventDefault();
+
+                                                }}>
                                             Подати заяву
                                         </Button>
                                     </Col>
