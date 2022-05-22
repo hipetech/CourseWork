@@ -1,7 +1,7 @@
 .formCard {
     margin: 20px auto;
     width: 1350px;
-    height: 300px;
+    height: 330px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -40,6 +40,10 @@
 .formBtn{
     width: 105%;
     height: 58px;
+    margin-top: 8%;
+}
 
+.priceMarker {
+    width: 250px;
 }
 

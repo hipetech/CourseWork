@@ -12,7 +12,8 @@ export class ClientForm extends Component {
             isLoaded: false,
             servicemen: [],
             services: [],
-            selectedServiceId: ''
+            selectedServiceId: '',
+            servicePrice: ''
         }
     }
 
@@ -57,6 +58,14 @@ export class ClientForm extends Component {
         })
     }
 
+    setServicePrice = (e) => {
+        this.state.services.forEach(({id, price}) => {
+            if (e === id) {
+                this.setState({servicePrice: price});
+            }
+        })
+    }
+
     _getServiceManData = () => {
         fetch("http://localhost:5000/getServicemen")
             .then(res => res.json())
@@ -81,8 +90,10 @@ export class ClientForm extends Component {
                     this.setState({
                         isLoaded: true,
                         services: result,
-                        selectedServiceId: result[0].id
+                        selectedServiceId: result[0].id,
+                        servicePrice: result[0].price
                     });
+
                 }, (error) => {
                     this.setState({
                         isLoaded: true,
@@ -119,6 +130,7 @@ export class ClientForm extends Component {
                                     <Form.Select onChange={(e) => {
                                         this.setState({selectedServiceId: Number(e.target.value)});
                                         renderServicemenDropdown = this.renderServicemenDropdown();
+                                        this.setServicePrice(Number(e.target.value));
                                     }}>
                                         {
                                             this.renderServiceDropdown()
@@ -145,7 +157,7 @@ export class ClientForm extends Component {
                                     <Form.Label>Оберіть мастера</Form.Label>
                                 </Form.Floating>
                                 <Row>
-                                    <Col>
+                                    <Col className={"buttonBox"}>
                                         <Button variant="primary" type="submit" className="mb-1 formBtn"
                                                 onClick={(e) => {
                                                     e.preventDefault();
@@ -167,6 +179,9 @@ export class ClientForm extends Component {
                                                 label="Візит мастера додому"
                                             />
                                         </Form.Group>
+                                        <p className={"priceMarker"}>
+                                            Ціна: {this.state.servicePrice} грн.
+                                        </p>
                                     </Col>
                                 </Row>
                             </Col>
