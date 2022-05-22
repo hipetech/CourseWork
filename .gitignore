@@ -23,6 +23,3 @@ yarn-error.log*
 #server
 /server/node_modules
 /httpTests
-
-#db
-/mysql-scripts
