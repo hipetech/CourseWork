@@ -18,33 +18,63 @@ export class ClientForm extends Component {
             address: '',
             email: '',
             tel: '',
+            firstServiceId: '',
             selectedServiceId: '',
             servicemanId: '',
             description: '',
             delivery: false,
             homeVisit: false,
             //Form style
-            cardPrimary: 'primary',
+            cardTheme: 'primary',
             formState: 'hide',
             formStatus: false,
             bannerCaption: 'Якщо ми вас зацікавили і вам потрібна наша допомога ви можете звернутися до нас',
-            buttonCaption: 'Звернутися до нас'
+            buttonCaption: 'Звернутися до нас',
+            buttonVisible: ''
 
         }
     }
 
-    checkSendStatus = () => {
+    errorAlert = (error) => {
         this.setState({
-            cardPrimary: 'success',
-            bannerCaption: 'Дякуємо за заяву! Гарного вам дня!',
-            buttonCaption: 'Подати заяву знов'
+            isLoaded: true,
+            cardTheme: 'warning',
+            bannerCaption: 'Сталася помилка спробуйте перезавантажити сторінку',
+            buttonVisible: "d-none",
+            error
         })
     }
 
-    resetForm = () => {
-        if (this.state.formStatus) {
-            document.getElementById('userForm').reset();
-        }
+    getServiceManData = () => {
+        fetch("http://localhost:5000/getServicemen")
+            .then(res => res.json())
+            .then((result) => {
+                    this.setState({
+                        isLoaded: true,
+                        servicemen: result
+                    });
+                }, (error) => {
+                    this.errorAlert(error);
+                }
+            );
+    }
+
+    getServiceData = () => {
+        fetch("http://localhost:5000/getService")
+            .then(res => res.json())
+            .then((result) => {
+                    this.setState({
+                        isLoaded: true,
+                        services: result,
+                        selectedServiceId: result[0].id,
+                        servicePrice: result[0].price,
+                        firstServiceId: result[0].id
+                    });
+
+                }, (error) => {
+                    this.errorAlert(error);
+                }
+            );
     }
 
     sendData = async () => {
@@ -62,34 +92,57 @@ export class ClientForm extends Component {
             homeVisit: this.state.homeVisit
         };
 
-        let response =  await fetch(url, {
-            method: "POST",
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(userData)
-        });
+        try {
+            let response = await fetch(url, {
+                method: "POST",
+                headers: {'Content-Type': 'application/json'},
+                body: JSON.stringify(userData)
+            });
 
-        if (response.ok) {
-            this.setState({
-                formStatus: true
-            })
+            if (response.ok) {
+                this.setState({
+                    formStatus: true
+                })
+                this.toggleForm();
+                this.checkSendStatus();
+            }
+        } catch (err) {
             this.toggleForm();
-            this.checkSendStatus();
-        } else {
-            console.log(response.status)
+            this.setState({
+                cardTheme: 'danger',
+                bannerCaption: 'Заяву не вдалося відправити! Спробуйте перезавантажити сторінку',
+                buttonVisible: "d-none",
+            });
+            console.error(err);
         }
-
-
     }
 
-    handleSubmit = (event) => {
+    checkSendStatus = () => {
+        this.setState({
+            cardTheme: 'success',
+            bannerCaption: 'Дякуємо за заяву! Гарного вам дня!',
+            buttonCaption: 'Подати заяву знов'
+        })
+    }
+
+    resetForm = async () => {
+        if (this.state.formStatus) {
+            document.getElementById('userForm').reset();
+            await this.getServiceManData();
+            this.getServiceData();
+            this.setState({formStatus: false});
+        }
+    }
+
+    handleSubmit = async (event) => {
         event.preventDefault();
         let form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.stopPropagation();
 
         } else if (form.checkValidity() === true) {
-            this.sendData();
-
+            await this.sendData();
+            await this.setState({servicemanId: ""});
         }
         this.setState({validated: true})
     }
@@ -98,7 +151,7 @@ export class ClientForm extends Component {
         if (this.state.formState === "hide") {
             this.setState(() => {
                 return {
-                    cardPrimary: "",
+                    cardTheme: "",
                     formState: "",
                     btnState: "hide"
                 }
@@ -106,7 +159,7 @@ export class ClientForm extends Component {
         } else {
             this.setState(() => {
                 return {
-                    cardPrimary: "primary",
+                    cardTheme: "primary",
                     formState: "hide",
                     btnState: ""
                 }
@@ -115,24 +168,23 @@ export class ClientForm extends Component {
         }
     }
 
+    setServicemanIdState = (serviceId) => {
+        let arr = [];
+        this.state.servicemen.forEach(({id, service_id, last_name}) => {
+            if (serviceId === service_id) {
+                arr.push(id);
+            }
+        })
+
+        this.setState({servicemanId: arr[0]});
+    }
+
     renderServiceDropdown = () => {
         return this.state.services.map(({id, service_name, price}) => {
             return (
                 <option value={id} key={id}>{service_name}</option>
             )
         })
-    }
-
-    setServiceManId = (e) => {
-        let arr = [];
-
-        this.state.servicemen.forEach(({id, service_id, last_name}) => {
-            if (e === service_id) {
-                arr.push(id);
-            }
-        })
-
-        this.setState({servicemanId: arr[0]});
     }
 
     renderServicemenDropdown = () => {
@@ -153,44 +205,6 @@ export class ClientForm extends Component {
                 this.setState({servicePrice: price});
             }
         })
-    }
-
-    _getServiceManData = () => {
-        fetch("http://localhost:5000/getServicemen")
-            .then(res => res.json())
-            .then((result) => {
-                    this.setState({
-                        isLoaded: true,
-                        servicemen: result
-                    });
-                }, (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    })
-                }
-            );
-    }
-
-    _getServiceData = () => {
-        fetch("http://localhost:5000/getService")
-            .then(res => res.json())
-            .then((result) => {
-                    this.setState({
-                        isLoaded: true,
-                        services: result,
-                        selectedServiceId: result[0].id,
-                        servicePrice: result[0].price
-                    });
-                    this.setServiceManId(Number(this.state.selectedServiceId));
-
-                }, (error) => {
-                    this.setState({
-                        isLoaded: true,
-                        error
-                    })
-                }
-            );
     }
 
     setFirstName = (e) => {
@@ -225,19 +239,38 @@ export class ClientForm extends Component {
         this.setState({homeVisit: (!this.state.homeVisit)});
     }
 
+    setServiceDropdown = (e) => {
+        this.setState({selectedServiceId: Number(e.target.value)});
+        this.setServicePrice(Number(e.target.value));
+        this.setServicemanIdState(Number(e.target.value));
+    }
+
+    setServicemanDropdown = (e) => {
+        this.setState({servicemanId: Number(e.target.value)});
+    }
+
+    setServicemanIdFirstValue = () => {
+        if (this.state.servicemanId === "") {
+            this.setServicemanIdState(Number(this.state.firstServiceId));
+        }
+    }
+
+    toggleFormBtn = () => {
+        this.resetForm().then(this.setServicemanIdFirstValue);
+        this.toggleForm();
+        this.setState({validated: false});
+    }
+
     componentDidMount() {
-        this._getServiceData();
-        this._getServiceManData();
+        this.getServiceData();
+        this.getServiceManData();
     }
 
     render() {
         let renderServicemenDropdown = this.renderServicemenDropdown();
-
-
-
         return (
             <>
-                <Card bg={this.state.cardPrimary} className={"formCard"}>
+                <Card bg={this.state.cardTheme} className={"formCard"}>
                     <Form noValidate onSubmit={this.handleSubmit} validated={this.state.validated}
                           className={`form ${this.state.formState}`} id={"userForm"}>
                         <CloseButton onClick={this.toggleForm} className={"closeBtn"}/>
@@ -255,14 +288,9 @@ export class ClientForm extends Component {
                                 </Form.Floating>
                                 <Form.Floating className="mb-1">
                                     <Form.Select onChange={(e) => {
-                                        this.setState({
-                                            selectedServiceId: Number(e.target.value)
-                                        });
                                         renderServicemenDropdown = this.renderServicemenDropdown();
-                                        this.setServicePrice(Number(e.target.value));
-                                        this.setServiceManId(Number(e.target.value));
-
-                                    }}>
+                                        this.setServiceDropdown(e);
+                                    }} value={this.state.selectedServiceId}>
                                         {
                                             this.renderServiceDropdown()
                                         }
@@ -282,9 +310,8 @@ export class ClientForm extends Component {
                                     <Form.Label>Номер телефону</Form.Label>
                                 </Form.Floating>
                                 <Form.Floating className="mb-1">
-                                    <Form.Select onChange={(e) => {
-                                        this.setState({servicemanId: Number(e.target.value)})
-                                    }}>
+                                    <Form.Select onChange={this.setServicemanDropdown}
+                                                 value={this.state.servicemanId}>
                                         {
                                             renderServicemenDropdown
                                         }
@@ -337,13 +364,8 @@ export class ClientForm extends Component {
                         <h2>
                             {this.state.bannerCaption}
                         </h2>
-                        <Button variant="outline-light" size="lg" onClick={() => {
-                            this.toggleForm();
-                            this.resetForm();
-                            this.setState({validated: false});
-
-
-                        }}>
+                        <Button variant="outline-light" size="lg" className={`${this.state.buttonVisible}`}
+                                onClick={this.toggleFormBtn}>
                             {this.state.buttonCaption}
                         </Button>
                     </div>
