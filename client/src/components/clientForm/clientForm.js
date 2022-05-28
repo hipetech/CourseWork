@@ -22,6 +22,7 @@ export class ClientForm extends Component {
             selectedServiceId: '',
             servicemanId: '',
             description: '',
+            dataTime: '',
             delivery: false,
             homeVisit: false,
             //Form style
@@ -31,7 +32,6 @@ export class ClientForm extends Component {
             bannerCaption: 'Якщо ми вас зацікавили і вам потрібна наша допомога ви можете звернутися до нас',
             buttonCaption: 'Звернутися до нас',
             buttonVisible: ''
-
         }
     }
 
@@ -77,6 +77,11 @@ export class ClientForm extends Component {
             );
     }
 
+    getCurrentDataTime = () => {
+        const now = new Date();
+        return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
+    }
+
     sendData = async () => {
         const url = "http://localhost:5000/postData";
         const userData = {
@@ -85,7 +90,7 @@ export class ClientForm extends Component {
             address: this.state.address,
             email: this.state.email,
             tel: this.state.tel,
-            selectedServiceId: this.state.selectedServiceId,
+            dataTime: this.getCurrentDataTime(),
             servicemanId: this.state.servicemanId,
             description: this.state.description,
             delivery: this.state.delivery,
