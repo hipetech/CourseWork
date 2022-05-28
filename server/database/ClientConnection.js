@@ -22,7 +22,6 @@ class ClientConnection {
     }
 
 
-
     _requestPromise = async (request) => {
         return new Promise((resolve, reject) => {
             this.clientConnection.query(request, (error, results) => {
@@ -49,6 +48,54 @@ class ClientConnection {
             'from computer_service.service_view'
 
         return this._requestPromise(request)
+    }
+
+    insertRequest = (clientRequest, applicationRequest) => {
+        return new Promise((resolve, reject) => {
+            this.clientConnection.query(clientRequest, (err) => {
+                if (err) {
+                    reject(500);
+                }
+            });
+
+            this.clientConnection.query(applicationRequest, (err) => {
+                if (err) {
+                    reject(500);
+                }
+                resolve(200);
+            });
+        });
+    }
+
+    setClientRequest = (firstName, lastName, email, tel, address) => {
+        return `insert computer_service.client(first_name, last_name, email, phone_number, address) 
+        value ('${firstName}', '${lastName}', '${email}', '${tel}', '${address}');`
+    }
+
+    setApplicationRequest = (servicemanId, email, dateTime, description, delivery, homeVisit) => {
+        return `insert computer_service.application(serviceman_id, client_id, application_date, application_details, delivery, home_visit) 
+        value (${servicemanId}, (select id from computer_service.client where email = '${email}' limit 1), '${dateTime}', '${description}', ${Number(delivery)}, ${Number(homeVisit)})`
+    }
+
+    insertApplication = (reqBody) => {
+
+        const {
+            firstName,
+            lastName,
+            address,
+            email,
+            tel,
+            dateTime,
+            servicemanId,
+            description,
+            delivery,
+            homeVisit
+        } = reqBody;
+
+        const clientRequest = this.setClientRequest(firstName, lastName, email, tel, address);
+        const applicationRequest = this.setApplicationRequest(servicemanId, email, dateTime, description, delivery, homeVisit);
+
+        return this.insertRequest(clientRequest, applicationRequest);
     }
 }
 

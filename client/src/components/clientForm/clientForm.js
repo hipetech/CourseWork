@@ -22,7 +22,6 @@ export class ClientForm extends Component {
             selectedServiceId: '',
             servicemanId: '',
             description: '',
-            dataTime: '',
             delivery: false,
             homeVisit: false,
             //Form style
@@ -77,7 +76,7 @@ export class ClientForm extends Component {
             );
     }
 
-    getCurrentDataTime = () => {
+    getCurrentDateTime = () => {
         const now = new Date();
         return `${now.getFullYear()}-${now.getMonth() + 1}-${now.getDate()} ${now.getHours()}:${now.getMinutes()}:${now.getSeconds()}`;
     }
@@ -90,7 +89,7 @@ export class ClientForm extends Component {
             address: this.state.address,
             email: this.state.email,
             tel: this.state.tel,
-            dataTime: this.getCurrentDataTime(),
+            dateTime: this.getCurrentDateTime(),
             servicemanId: this.state.servicemanId,
             description: this.state.description,
             delivery: this.state.delivery,
@@ -135,7 +134,11 @@ export class ClientForm extends Component {
             document.getElementById('userForm').reset();
             await this.getServiceManData();
             this.getServiceData();
-            this.setState({formStatus: false});
+            this.setState({
+                formStatus: false,
+                delivery: false,
+                homeVisit: false
+            });
         }
     }
 

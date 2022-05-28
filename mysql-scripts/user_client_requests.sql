@@ -12,4 +12,4 @@ insert computer_service.client(first_name, last_name, email, phone_number, addre
 
 insert computer_service.application(serviceman_id, client_id, application_date, application_details, delivery,
                                     home_visit)
-    value (2, (select id from computer_service.client where first_name = 'Володимир' and last_name = 'Мозайчук1'), '2022-4-6 1:1:4', '', 1, 1)
+    value (2, (select id from computer_service.client where email = 'example@gmail.com' limit 1), '2022-5-28 19:42:1', '', 1, 1)
