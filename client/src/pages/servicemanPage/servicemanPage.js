@@ -8,15 +8,7 @@ export class ServicemanPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            id: '',
-            user: {
-                firstName: 'Іван',
-                lastName: 'Маслюк',
-                email: 'exmaple@gmail.com',
-                telNumber: '+380955242196',
-                service: 'Налаштування ПЗ'
-
-            },
+            user: '',
             applications: [
                 {
                     id: 1,
@@ -207,16 +199,27 @@ export class ServicemanPage extends Component {
         }
     }
 
+    getServiceManData = (id) => {
+        fetch('http://localhost:5000/getServicemanData',{
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({serviceman_id: id})
+        })
+            .then(response => response.json())
+            .then(result => this.setState({user: result[0]}));
+    }
+
     toggleContent = (servicemanId) => {
         if (this.state.pageContentVisible === 'hide') {
             this.setState({
                 formVisible: 'hide',
-                pageContentVisible: '',
-                id: servicemanId
-            })
+                pageContentVisible: ''
+            });
+            this.getServiceManData(servicemanId);
         }
     }
-
 
     changeStatus = (id, status) => {
         let applications = this.state.applications;

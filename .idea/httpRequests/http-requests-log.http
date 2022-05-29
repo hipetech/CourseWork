@@ -5,6 +5,17 @@ Content-Type: application/json
   "serviceman_id": 1
 }
 
+<> 2022-05-29T221507.200.json
+
+###
+
+POST http://localhost:5000/getServicemanData
+Content-Type: application/json
+
+{
+  "serviceman_id": 1
+}
+
 <> 2022-05-29T212200.200.json
 
 ###
@@ -502,12 +513,6 @@ GET http://localhost:5000/getService
 GET http://localhost:5000/getService
 
 <> 2022-05-24T115415.200.json
-
-###
-
-GET http://localhost:5000/getService
-
-<> 2022-05-24T114829.200.json
 
 ###
 

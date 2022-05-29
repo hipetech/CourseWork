@@ -18,7 +18,7 @@ export class UserInfo extends Component {
             this.setState({dayPeriod: 'Доброго дня'})
         } else if (hours > 15 && hours <= 22) {
             this.setState({dayPeriod: 'Доброго вечора'})
-        } else if (hours > 22 && hours <= 4) {
+        } else {
             this.setState({dayPeriod: 'Доброї ночі'})
         }
     }
@@ -66,10 +66,10 @@ export class UserInfo extends Component {
 
     render() {
         let {
-            firstName,
-            lastName,
+            first_name,
+            last_name,
             email,
-            telNumber,
+            phone_number,
             service
         } = this.props.data;
 
@@ -85,7 +85,7 @@ export class UserInfo extends Component {
                             {this.state.dayPeriod}
                         </h2>
                         <h2>
-                            {firstName} {lastName}
+                            {first_name} {last_name}
                         </h2>
                     </section>
                     <section className="cardData userData">
@@ -97,7 +97,7 @@ export class UserInfo extends Component {
                             </div>
                             <div className="item number">
                                 <p>
-                                    Ваш номер телефону: <span className="dataText">{telNumber}</span>
+                                    Ваш номер телефону: <span className="dataText">{phone_number}</span>
                                 </p>
                             </div>
                             <div className="item service">

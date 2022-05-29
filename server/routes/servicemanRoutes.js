@@ -19,6 +19,7 @@ const servicemanRoutes = (app) => {
         serviceman.createConnection();
         let result = await serviceman.getServicemanData(req.body)
         res.send(result);
+        serviceman.disableConnection();
     })
 }
 module.exports = servicemanRoutes;

@@ -39,17 +39,15 @@ export class SignInForm extends Component {
 	}
 
 	authorization = () => {
-		const serviceman = {
-			email: this.state.email,
-			passwd: this.state.passwd
-		};
-
 		fetch("http://localhost:5000/servicemanAuth", {
 			method: "POST",
 			headers: {
 				'Content-Type': 'application/json'
 			},
-			body: JSON.stringify(serviceman)
+			body: JSON.stringify({
+				email: this.state.email,
+				passwd: this.state.passwd
+			})
 		})
 			.then(response => response.json())
 			.then(result => this.setFetchAuthorizationDataResult(result))
@@ -72,9 +70,7 @@ export class SignInForm extends Component {
 					<h2 className={"signInFormTitle"}>
                         Увійти як працівник
 					</h2>
-					<Form  validated={this.state.validated} className={"signInForm"} onSubmit={(e => {
-						this.handleSubmit(e);
-					})}>
+					<Form  validated={this.state.validated} className={"signInForm"} onSubmit={this.handleSubmit}>
 						<Form.Group className="mb-3">
 							<Form.Floating className="mb-1">
 								<Form.Control required type="email" placeholder="Введіть email" value={this.state.email}
