@@ -38,7 +38,12 @@ export class SignInForm extends Component {
 		}
 	}
 
-	fetchAuthorizationData = (serviceman) => {
+	authorization = () => {
+		const serviceman = {
+			email: this.state.email,
+			passwd: this.state.passwd
+		};
+
 		fetch("http://localhost:5000/servicemanAuth", {
 			method: "POST",
 			headers: {
@@ -50,21 +55,13 @@ export class SignInForm extends Component {
 			.then(result => this.setFetchAuthorizationDataResult(result))
 	}
 
-	authorization = () => {
-		const serviceman = {
-			email: this.state.email,
-			passwd: this.state.passwd
-		};
-		this.fetchAuthorizationData(serviceman);
-	}
-
-	handleSubmit = (e) => {
+	handleSubmit = async (e) => {
 		e.preventDefault();
 		const form = e.currentTarget;
 		if (form.checkValidity() === false) {
 			e.stopPropagation();
 		} else if (form.checkValidity() === true) {
-			this.authorization();
+			await this.authorization();
 		}
 	};
 

@@ -1,14 +1,12 @@
 use computer_service;
 
-create user 'serviceman'@'localhost' identified by 'passwd';
-flush privileges;
+select id
+from computer_service.serviceman_view
+where email = 'kirikfifa@aevtpet.com'
+  and password = '8KY><B=}my&9EhWF';
 
-grant select on application_view to 'serviceman'@'localhost';
-grant select on client_view to 'serviceman'@'localhost';
-grant select on delivery_view to 'serviceman'@'localhost';
-grant select on home_visit_view to 'serviceman'@'localhost';
-grant select on service_view to 'serviceman'@'localhost';
-grant select on serviceman_view to 'serviceman'@'localhost';
-
-grant select (id, serviceman_id, client_id, application_date, application_details, delivery, home_visit,
-              status), update (status) on application to 'serviceman'@'localhost';
+use computer_service;
+select first_name, last_name, email, phone_number, (select service_name from service_view where id = service_id)
+from serviceman_view
+where id = 1
+limit 1;

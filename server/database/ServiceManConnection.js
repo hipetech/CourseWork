@@ -45,6 +45,23 @@ class ServiceManConnection {
         const request = this.servicemanAuthorizationRequest(email, passwd);
         return this.requestPromise(request);
     }
+
+    getServicemanDataRequest = (serviceman_id) => {
+        return `select first_name,
+                       last_name,
+                       email,
+                       phone_number,
+                       (select service_name from service_view where id = service_id) as service
+                from serviceman_view
+                where id = ${serviceman_id}
+                limit 1`;
+    }
+
+    getServicemanData = (req_body) => {
+        const {serviceman_id} = req_body;
+        const request = this.getServicemanDataRequest(serviceman_id);
+        return this.requestPromise(request);
+    }
 }
 
 module.exports = ServiceManConnection;
