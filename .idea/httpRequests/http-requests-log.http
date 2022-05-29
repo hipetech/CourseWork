@@ -1,0 +1,484 @@
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "korimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T141048.200.html
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "orimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T141035.200.html
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "orimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T140844.200.json
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "orimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "orimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "orimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T140409.200.json
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T140014.200.json
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T134827.404.html
+
+###
+
+POST http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "lorimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+###
+
+GET http://localhost:5000/getServicemen
+
+<> 2022-05-26T111644.200.json
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T224830.200.txt
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212822.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212801.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212641.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212623.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212518.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212457.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212230.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T212051.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T211957.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T211943.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T211907.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T211827.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T211718.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T211559.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+<> 2022-05-25T210930.200.html
+
+###
+
+POST http://localhost:5000/postData
+Content-Type: application/json
+
+{
+  "id": 999,
+  "value": "content"
+}
+
+###
+
+GET http://localhost:5000/getServicemen
+
+<> 2022-05-24T200944-1.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T200944.200.json
+
+###
+
+GET http://localhost:5000/getServicemen
+
+<> 2022-05-24T200936-1.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T200936.200.json
+
+###
+
+GET http://localhost:5000/getServicemen
+
+<> 2022-05-24T200852.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T200851.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T115415.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T114829.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T113525.200.json
+
+###
+
+GET http://localhost:5000/getServicemen
+
+<> 2022-05-24T113343-1.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-24T113343.200.json
+
+###
+
+GET http://localhost:5000/getServicemen
+
+<> 2022-05-22T225245-1.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-22T225245.200.json
+
+###
+
+GET http://localhost:5000/getService
+
+<> 2022-05-22T225044.200.json
+
+###
+

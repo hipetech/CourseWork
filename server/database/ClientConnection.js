@@ -22,7 +22,7 @@ class ClientConnection {
     }
 
 
-    _requestPromise = async (request) => {
+    requestPromise = async (request) => {
         return new Promise((resolve, reject) => {
             this.clientConnection.query(request, (error, results) => {
                 if (error) {
@@ -39,7 +39,7 @@ class ClientConnection {
             'select id, first_name, last_name, service_id ' +
             'from computer_service.serviceman_view'
 
-        return this._requestPromise(request);
+        return this.requestPromise(request);
     }
 
     selectService = () => {
@@ -47,7 +47,7 @@ class ClientConnection {
             'select id, service_name, price ' +
             'from computer_service.service_view'
 
-        return this._requestPromise(request)
+        return this.requestPromise(request)
     }
 
     insertRequest = (clientRequest, applicationRequest) => {
@@ -69,7 +69,7 @@ class ClientConnection {
 
     setClientRequest = (firstName, lastName, email, tel, address) => {
         return `insert computer_service.client(first_name, last_name, email, phone_number, address) 
-        value ('${firstName}', '${lastName}', '${email}', '${tel}', '${address}');`
+        value ('${firstName}', '${lastName}', '${email}', '${tel}', '${address}')`
     }
 
     setApplicationRequest = (servicemanId, email, dateTime, description, delivery, homeVisit) => {
