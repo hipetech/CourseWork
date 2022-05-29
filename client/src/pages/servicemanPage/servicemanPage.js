@@ -8,12 +8,14 @@ export class ServicemanPage extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            id: '',
             user: {
                 firstName: 'Іван',
                 lastName: 'Маслюк',
                 email: 'exmaple@gmail.com',
                 telNumber: '+380955242196',
                 service: 'Налаштування ПЗ'
+
             },
             applications: [
                 {
@@ -205,11 +207,13 @@ export class ServicemanPage extends Component {
         }
     }
 
-    toggleContent = () => {
+    toggleContent = (servicemanId) => {
         if (this.state.pageContentVisible === 'hide') {
-            this.setState({formVisible: 'hide', pageContentVisible: ''})
-        } else if (this.state.pageContentVisible !== 'hide') {
-            this.setState({formVisible: '', pageContentVisible: 'hide'})
+            this.setState({
+                formVisible: 'hide',
+                pageContentVisible: '',
+                id: servicemanId
+            })
         }
     }
 

@@ -1,46 +1,107 @@
 import {Component} from "react";
-import {Button, Form} from "react-bootstrap";
+import {Button, Form, Alert} from "react-bootstrap";
 import "./signInForm.css"
 
 export class SignInForm extends Component {
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
+		this.state = {
+			show: true,
+			email: "",
+			passwd: "",
+			alertVisible: "d-none",
+			validated: false
+		};
+	}
 
+	setEmail = (e) => {
+		this.setState({email: e.target.value});
+	};
 
-        this.state = {
-            show: true
-        }
-    };
+	setPassword = (e) => {
+		this.setState({passwd: e.target.value});
+	};
 
-    render() {
-        return (
-            <section className={`signInFormBox ${this.props.hide}`}>
-                <div className="borderForm">
-                    <h2 className={"signInFormTitle"}>
+	setFetchAuthorizationDataResult = (result) => {
+		if (result[0].id === "Wrong data"){
+			this.setState(
+				{
+					alertVisible: "",
+					validated: false
+				});
+		} else {
+			this.setState({
+				alertVisible: "d-none",
+				validated: true
+			});
+			this.props.toggleContent(result[0].id);
+		}
+	}
+
+	fetchAuthorizationData = (serviceman) => {
+		fetch("http://localhost:5000/servicemanAuth", {
+			method: "POST",
+			headers: {
+				'Content-Type': 'application/json'
+			},
+			body: JSON.stringify(serviceman)
+		})
+			.then(response => response.json())
+			.then(result => this.setFetchAuthorizationDataResult(result))
+	}
+
+	authorization = () => {
+		const serviceman = {
+			email: this.state.email,
+			passwd: this.state.passwd
+		};
+		this.fetchAuthorizationData(serviceman);
+	}
+
+	handleSubmit = (e) => {
+		e.preventDefault();
+		const form = e.currentTarget;
+		if (form.checkValidity() === false) {
+			e.stopPropagation();
+		} else if (form.checkValidity() === true) {
+			this.authorization();
+		}
+	};
+
+	render() {
+		return (
+			<section className={`signInFormBox ${this.props.hide}`}>
+				<div className="borderForm">
+					<h2 className={"signInFormTitle"}>
                         Увійти як працівник
-                    </h2>
-                    <Form className={"signInForm"}>
-                        <Form.Group className="mb-3">
-                            <Form.Floating className="mb-1">
-                                <Form.Control type="email" placeholder="Введіть email"/>
-                                <Form.Label>Email</Form.Label>
-                            </Form.Floating>
-                        </Form.Group>
-                        <Form.Group className="mb-3">
-                            <Form.Floating className="mb-1">
-                                <Form.Control type="password" placeholder="Введіть пароль"/>
-                                <Form.Label>Password</Form.Label>
-                            </Form.Floating>
-                        </Form.Group>
-                        <Button className={"signInFormBtn"} variant="primary" type={"submit"} onClick={(e) => {
-                            e.preventDefault();
-                            this.props.toggleContent();
-                        }}>
+					</h2>
+					<Form  validated={this.state.validated} className={"signInForm"} onSubmit={(e => {
+						this.handleSubmit(e);
+					})}>
+						<Form.Group className="mb-3">
+							<Form.Floating className="mb-1">
+								<Form.Control required type="email" placeholder="Введіть email" value={this.state.email}
+									onChange={this.setEmail}/>
+								<Form.Label>Email</Form.Label>
+							</Form.Floating>
+						</Form.Group>
+						<Form.Group className="mb-3">
+							<Form.Floating className="mb-1">
+								<Form.Control required type="password" placeholder="Введіть пароль" value={this.state.passwd}
+									onChange={this.setPassword}/>
+								<Form.Label>Password</Form.Label>
+							</Form.Floating>
+						</Form.Group>
+						<Button className={"signInFormBtn"} variant="primary" type={"submit"}>
                             Увійти
-                        </Button>
-                    </Form>
-                </div>
-            </ section>
-        )
-    }
+						</Button>
+						<Alert variant={"danger"} className={this.state.alertVisible}
+							style={{position: "absolute", width: "330px", top: "426px", zIndex: "-1"}}>
+                            Данні введено невірно.
+						</Alert>
+					</Form>
+				</div>
+			</section>
+		);
+	}
 }

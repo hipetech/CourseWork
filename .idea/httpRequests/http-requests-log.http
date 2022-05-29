@@ -1,3 +1,15 @@
+POST http://localhost:5000/servicemanAuth
+Content-Type: application/json
+
+{
+  "email": "korimerd@tednbe.com",
+  "passwd": "y8VqFq/,!43MKpJV"
+}
+
+<> 2022-05-29T184119.200.html
+
+###
+
 GET http://localhost:5000/servicemanAuth
 Content-Type: application/json
 
@@ -473,12 +485,6 @@ GET http://localhost:5000/getServicemen
 GET http://localhost:5000/getService
 
 <> 2022-05-22T225245.200.json
-
-###
-
-GET http://localhost:5000/getService
-
-<> 2022-05-22T225044.200.json
 
 ###
 
