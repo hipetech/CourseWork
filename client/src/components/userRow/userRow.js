@@ -8,11 +8,18 @@ export class UserRow extends Component {
         super(props);
 
         this.state = {
-            delivery: this.props.rowData.delivery,
-            homeVisit: this.props.rowData.homeVisit,
+            delivery: Boolean(this.props.rowData.delivery),
+            homeVisit: Boolean(this.props.rowData.homeVisit),
             status: this.props.rowData.status,
             variant: 'danger'
         }
+    }
+
+    setTime = (time) => {
+        const applicationTime = new Date(time);
+        const date = `${applicationTime.getDate()}.${applicationTime.getMonth()}.${applicationTime.getFullYear()}`;
+        const hours = `${applicationTime.getHours()}:${applicationTime.getMinutes()}`;
+        return `${date} ${hours}`;
     }
 
     boolCheck = (state, firstValue, secondValue) => {
@@ -62,11 +69,11 @@ export class UserRow extends Component {
     }
 
     orderStatusCheck = () => {
-        if (this.state.status === 'to do') {
+        if (this.state.status === 'TO DO') {
             return 'Чекає'
-        } else if (this.state.status === 'in progress') {
+        } else if (this.state.status === 'IN PROGRESS') {
             return 'Виконується'
-        } else if (this.state.status === 'done') {
+        } else if (this.state.status === 'DONE') {
             return 'Виконано'
         }
     }
@@ -79,26 +86,39 @@ export class UserRow extends Component {
     }
 
     toDoChange = () => {
-        this.orderStatusChange('to do', 'danger');
+        this.orderStatusChange('TO DO', 'danger');
     }
 
     inProgressChange = () => {
-        this.orderStatusChange('in progress', 'primary');
+        this.orderStatusChange('IN PROGRESS', 'primary');
     }
 
     doneChange = () => {
-        this.orderStatusChange('done', 'success');
+        this.orderStatusChange('DONE', 'success');
     }
 
+    checkVariantOnLoadComponent = () => {
+        if (this.state.status === 'TO DO') {
+            this.setState({variant: 'danger'});
+        } else if (this.state.status === 'IN PROGRESS') {
+            this.setState({variant: 'primary'});
+        } else if (this.state.status === 'DONE') {
+            this.setState({variant: 'success'});
+        }
+    }
+
+    componentDidMount() {
+        this.checkVariantOnLoadComponent();
+    }
 
     render() {
         let id = this.props.id
         let {
-            firstName, lastName, email,
-            telNumber,
-            homeAddress,
-            applicationDate,
-            orderDetails
+            first_name, last_name, email,
+            phone_number,
+            address,
+            application_date,
+            application_details
         } = this.props.rowData
 
         return (
@@ -108,25 +128,25 @@ export class UserRow extends Component {
                         {id}
                     </td>
                     <td>
-                        {firstName}
+                        {first_name}
                     </td>
                     <td>
-                        {lastName}
+                        {last_name}
                     </td>
                     <td>
                         {email}
                     </td>
                     <td>
-                        {telNumber}
+                        {phone_number}
                     </td>
                     <td>
-                        {homeAddress}
+                        {address}
                     </td>
                     <td>
-                        {applicationDate}
+                        {this.setTime(application_date)}
                     </td>
                     <td>
-                        <OrderDetailsOverlay orderDetails={orderDetails}/>
+                        <OrderDetailsOverlay orderDetails={application_details}/>
                     </td>
                     <td>
                         <div className={"deliveryBox"}>

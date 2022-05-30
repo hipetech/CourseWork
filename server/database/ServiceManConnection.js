@@ -62,6 +62,47 @@ class ServiceManConnection {
         const request = this.getServicemanDataRequest(serviceman_id);
         return this.requestPromise(request);
     }
+
+    getServicemanApplicationsRequest = (serviceman_id) => {
+        return `select application_view.id,
+                       first_name,
+                       last_name,
+                       email,
+                       phone_number,
+                       address,
+                       application_date,
+                       application_details,
+                       delivery,
+                       home_visit,
+                       application_view.status
+                from client_view,
+                     application_view
+                where client_view.id = client_id
+                  and serviceman_id = ${serviceman_id}`;
+    }
+
+    getServicemanApplications = (req_body) => {
+        const {serviceman_id} = req_body;
+        const request = this.getServicemanApplicationsRequest(serviceman_id);
+        return this.requestPromise(request);
+    }
+
+    setServicemanApplicationStatusRequest = (id, status) => {
+        return `update computer_service.application
+                set computer_service.application.status = '${status}'
+                where id = ${id}`;
+    }
+
+    setServicemanApplicationStatus = async (req_body) => {
+        const {id, status} = req_body;
+        const request = this.setServicemanApplicationStatusRequest(id, status);
+        try {
+            await this.requestPromise(request);
+            return "DONE";
+        } catch (e) {
+            return "FALSE";
+        }
+    }
 }
 
 module.exports = ServiceManConnection;

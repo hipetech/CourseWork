@@ -35,17 +35,14 @@ class ClientConnection {
 
 
     selectServiceMen = () => {
-        const request =
-            'select id, first_name, last_name, service_id ' +
-            'from computer_service.serviceman_view'
-
+        const request = `select id, first_name, last_name, service_id
+                         from computer_service.serviceman_view`;
         return this.requestPromise(request);
     }
 
     selectService = () => {
-        const request =
-            'select id, service_name, price ' +
-            'from computer_service.service_view'
+        const request = `select id, service_name, price
+                         from computer_service.service_view`
 
         return this.requestPromise(request)
     }

@@ -9,206 +9,43 @@ export class ServicemanPage extends Component {
         super(props);
         this.state = {
             user: '',
-            applications: [
-                {
-                    id: 1,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: '',
-                    delivery: true,
-                    homeVisit: false,
-                    status: 'to do'
-                },
-                {
-                    id: 2,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: false,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 3,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 4,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 5,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 6,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 7,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 8,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 9,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 10,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 11,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 12,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: false,
-                    homeVisit: true,
-                    status: 'to do'
-                },
-                {
-                    id: 13,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: true,
-                    homeVisit: false,
-                    status: 'to do'
-                },
-                {
-                    id: 14,
-                    firstName: 'Полина',
-                    lastName: 'Чугай',
-                    email: 'exmaple@gmail.com',
-                    telNumber: '+380955242196',
-                    homeAddress: 'test',
-                    applicationDate: '2021-01-05',
-                    orderDetails: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.',
-                    delivery: false,
-                    homeVisit: true,
-                    status: 'to do'
-                }
-
-            ],
+            applications: [],
             formVisible: '',
             pageContentVisible: 'hide'
         }
     }
 
-    getServiceManData = (id) => {
-        fetch('http://localhost:5000/getServicemanData',{
+    getDataPromise = (id, api) => {
+        return fetch(api, {
             method: "POST",
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({serviceman_id: id})
         })
-            .then(response => response.json())
+            .then(response => response.json());
+    }
+
+    getServicemanData = (id) => {
+        this.getDataPromise(id, "http://localhost:5000/getServicemanData")
             .then(result => this.setState({user: result[0]}));
+    }
+
+    getServicemanApplications = (id) => {
+        this.getDataPromise(id, "http://localhost:5000/getServicemanApplications")
+            .then(result => {
+                this.setState({applications: result});
+            });
+    }
+
+    setServiceManApplicationStatus = (id, status) => {
+        return fetch("http://localhost:5000/setServicemanApplicationStatus", {
+            method: "POST",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({id: id, status: status})
+        }).then(response => response.text())
     }
 
     toggleContent = (servicemanId) => {
@@ -217,18 +54,32 @@ export class ServicemanPage extends Component {
                 formVisible: 'hide',
                 pageContentVisible: ''
             });
-            this.getServiceManData(servicemanId);
+            this.getServicemanData(servicemanId);
+            this.getServicemanApplications(servicemanId);
         }
     }
 
-    changeStatus = (id, status) => {
+    changeStatus = async (id, status) => {
         let applications = this.state.applications;
 
-        applications[id].status = status;
+        applications.forEach(el => {
+            if (el.id === id) {
+                el.status = status;
+            }
+        });
 
-        this.setState({
-            applications: applications
-        })
+        const result = await this.setServiceManApplicationStatus(id, status);
+
+        if (result === "DONE") {
+            this.setState({
+                applications: applications
+            })
+        } else {
+            console.log(result);
+        }
+
+
+
     }
 
     render() {

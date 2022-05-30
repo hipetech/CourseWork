@@ -28,7 +28,7 @@ export class UserInfo extends Component {
         let counter = 0;
 
         this.props.applications.forEach((el) => {
-            if (el.status === 'to do' || el.status === 'in progress') {
+            if (el.status === 'TO DO' || el.status === 'IN PROGRESS') {
                 counter += 1;
             }
         })

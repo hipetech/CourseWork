@@ -20,6 +20,22 @@ const servicemanRoutes = (app) => {
         let result = await serviceman.getServicemanData(req.body)
         res.send(result);
         serviceman.disableConnection();
+    });
+
+    app.post('/getServicemanApplications', async (req, res) => {
+        const serviceman = new ServiceManConnection();
+        serviceman.createConnection();
+        let result = await serviceman.getServicemanApplications(req.body);
+        res.send(result);
+        serviceman.disableConnection();
+    });
+
+    app.post('/setServicemanApplicationStatus', async (req, res) => {
+        const serviceman = new ServiceManConnection();
+        serviceman.createConnection();
+        let result = await serviceman.setServicemanApplicationStatus(req.body);
+        res.send(result);
+        serviceman.disableConnection();
     })
 }
 module.exports = servicemanRoutes;
