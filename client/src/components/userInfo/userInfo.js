@@ -40,7 +40,7 @@ export class UserInfo extends Component {
         let counter = 0;
 
         this.props.applications.forEach((el) => {
-            if (el.homeVisit && el.status !== 'done') {
+            if (el["home_visit"] && el.status !== 'DONE') {
                 counter += 1;
             }
         })
@@ -52,7 +52,7 @@ export class UserInfo extends Component {
         let counter = 0;
 
         this.props.applications.forEach((el) => {
-            if (el.delivery && el.status !== 'done') {
+            if (el.delivery && el.status !== 'DONE') {
                 counter += 1;
             }
         })
