@@ -279,19 +279,19 @@ export class ClientForm extends Component {
 		return (
 			<>
 				<Card bg={this.state.cardTheme} className={"formCard"}>
-					<Form onSubmit={this.handleSubmit} validated={this.state.validated}
+					<Form noValidate onSubmit={this.handleSubmit} validated={this.state.validated}
 						className={`form ${this.state.formState}`} id={"userForm"}>
 						<CloseButton onClick={this.toggleForm} className={"closeBtn"}/>
 						<Row className="g-2">
 							<Col md>
 								<Form.Floating className="mb-1">
 									<Form.Control required type="text" placeholder="Введіть ім'я"
-										onChange={this.setFirstName}/>
+										onChange={this.setFirstName} value={this.state.firstName}/>
 									<Form.Label>Ім'я</Form.Label>
 								</Form.Floating>
 								<Form.Floating className="mb-1">
 									<Form.Control required type="email" placeholder="Введіть email"
-										onChange={this.setEmail}/>
+										onChange={this.setEmail} value={this.state.email}/>
 									<Form.Label>Email</Form.Label>
 								</Form.Floating>
 								<Form.Floating className="mb-1">
@@ -309,12 +309,12 @@ export class ClientForm extends Component {
 							<Col md>
 								<Form.Floating className="mb-1">
 									<Form.Control required type="text" placeholder="Введіть прізвище"
-										onChange={this.setLastName}/>
+										onChange={this.setLastName} value={this.state.lastName}/>
 									<Form.Label>Прізвище</Form.Label>
 								</Form.Floating>
 								<Form.Floating className="mb-1">
 									<Form.Control required type="tel" placeholder="Введіть номер телефону"
-										onChange={this.setTel}/>
+										onChange={this.setTel} value={this.state.tel} pattern={"[+]?[0-9]{12}"}/>
 									<Form.Label>Номер телефону</Form.Label>
 								</Form.Floating>
 								<Form.Floating className="mb-1">
@@ -339,6 +339,7 @@ export class ClientForm extends Component {
 												id="custom-switch"
 												label="Доставка додому"
 												onChange={this.setDelivery}
+												value={this.state.delivery}
 
 											/>
 											<Form.Check
@@ -346,6 +347,7 @@ export class ClientForm extends Component {
 												id="custom-switch"
 												label="Візит мастера додому"
 												onChange={this.setHomeVisit}
+												value={this.state.homeVisit}
 											/>
 										</Form.Group>
 										<p className={"priceMarker"}>
@@ -357,13 +359,13 @@ export class ClientForm extends Component {
 							<Col>
 								<Form.Floating className="mb-1">
 									<Form.Control required type="text" placeholder="Введіть адресу"
-										onChange={this.setAddress}/>
+										onChange={this.setAddress} value={this.state.address}/>
 									<Form.Label>Адреса</Form.Label>
 								</Form.Floating>
 								<Form.Group className="mb-1 textArea">
 									<Form.Control as="textarea" placeholder="Опишіть проблему докладніше"
 										style={{height: "120px"}} isValid={false}
-										onChange={this.setDescription}/>
+										onChange={this.setDescription} value={this.state.description}/>
 								</Form.Group>
 							</Col>
 						</Row>

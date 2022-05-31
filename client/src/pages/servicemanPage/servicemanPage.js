@@ -38,7 +38,7 @@ export class ServicemanPage extends Component {
             });
     }
 
-    setServiceManApplicationStatus = (id, status) => {
+    setServicemanApplicationStatus = (id, status) => {
         return fetch("http://localhost:5000/setServicemanApplicationStatus", {
             method: "POST",
             headers: {
@@ -68,18 +68,21 @@ export class ServicemanPage extends Component {
             }
         });
 
-        const result = await this.setServiceManApplicationStatus(id, status);
+        const result = await this.setServicemanApplicationStatus(id, status);
 
         if (result === "DONE") {
             this.setState({
                 applications: applications
             })
-        } else {
-            console.log(result);
+        } else if (result === "FALSE") {
+            console.error("FALSE");
         }
+    }
 
-
-
+    sortBy = (sortParam) => {
+        const arr = this.state.applications;
+        arr.sort(sortParam);
+        this.setState({applications: arr});
     }
 
     render() {
@@ -97,7 +100,8 @@ export class ServicemanPage extends Component {
                     <h2 className="title">
                         Замовлення
                     </h2>
-                    <UserApplications applications={this.state.applications} changeStatus={this.changeStatus}/>
+                    <UserApplications applications={this.state.applications} changeStatus={this.changeStatus}
+                                      sortBy={this.sortBy}/>
                 </section>
             </section>
         </>)

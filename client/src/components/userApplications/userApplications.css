@@ -7,3 +7,24 @@
 .tableStatus {
     width: 150px;
 }
+
+.sortIcon {
+    width: 12px;
+    margin-left: 5px;
+}
+
+.sortByIdHeading {
+    width: 100px;
+}
+
+.sortByFirstname {
+    width: 110px;
+}
+
+.sortByLastname {
+    width: 148px;
+}
+
+.sortByDate {
+    width: 202px;
+}

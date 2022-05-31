@@ -8,8 +8,8 @@ export class UserRow extends Component {
         super(props);
 
         this.state = {
-            delivery: Boolean(this.props.rowData.delivery),
-            homeVisit: Boolean(this.props.rowData.homeVisit),
+            delivery: this.props.rowData.delivery,
+            homeVisit: this.props.rowData["home_visit"],
             status: this.props.rowData.status,
             variant: 'danger'
         }
@@ -23,7 +23,7 @@ export class UserRow extends Component {
     }
 
     boolCheck = (state, firstValue, secondValue) => {
-        if (state) {
+        if (state === 1) {
             return (
                 firstValue
             )
@@ -124,7 +124,7 @@ export class UserRow extends Component {
         return (
             <>
                 <tr>
-                    <td>
+                    <td className={"test"}>
                         {id}
                     </td>
                     <td>
