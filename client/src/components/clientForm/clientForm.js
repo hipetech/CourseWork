@@ -137,7 +137,16 @@ export class ClientForm extends Component {
 			this.setState({
 				formStatus: false,
 				delivery: false,
-				homeVisit: false
+				homeVisit: false,
+				firstName: "",
+				lastName: "",
+				address: "",
+				email: "",
+				tel: "",
+				firstServiceId: "",
+				selectedServiceId: "",
+				servicemanId: "",
+				description: ""
 			});
 		}
 	};
